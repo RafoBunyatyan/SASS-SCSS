@@ -1,0 +1,135 @@
+*{padding: 0;margin: 0;border: 0;}
+*,*::before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box; box-sizing: border-box;}
+:focus, :active{outline: none;}
+a:focus, a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height: 100%;width: 100%;font-size: 100%;line-height: normal;}
+input,button,textarea{font-family: inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding: 0;border: 0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: inherit;}
+
+
+header  {
+	h1 {
+		font-size: 18px;
+		color: red;
+	}
+	 p {
+		font-size: 14px;
+		color: green;
+	}
+	a {
+		font-size: 14px;
+		color: black;
+		text-decoration: none;
+	}
+}
+
+.link {    //scss hoveri greladevna senc
+	text-decoration: none;
+	color: yellow;
+	&:hover {
+		color: red;
+	}
+	&:focus {
+		color: black;
+	}
+}
+
+$color-h1: red;  //ete petq e mi qani tex nuyn banic tal grum enq ayspes
+$color-2: #255587; 
+$fz: 100px;
+
+header {
+	h1 {
+		color: $color-h1;
+	}
+}
+
+%text-style-h1 {    // grupirovkayi hamar ayspes grel %..
+	font-family: monospace;
+	font-weight: 500;
+	color: red;
+}
+
+%text-style-p {
+	font-family: Open Sans;
+	font-weight: 400;
+	color: green;	
+}
+
+// header    //sass-@ aranc devavor pakagteriya grvum ev partadir en prabelneri hetakanutyun@ vor chxaxtvi
+
+// 	h1 
+// 		@extend %text-style-h1
+	
+
+// 	p 
+// 		@extend %text-style-p
+
+// .desc 
+
+// 	h1 
+// 		@extend %text-style-h1
+	
+
+// 	p 
+// 		@extend %text-style-p
+	
+/* scss um komentariyan aypes grelov css-umela grvum*/
+// bayc vor ayspisina linum komentariyan chi grvum css-um
+
+.tplborder{ 		//@extend .tplborder; senc enq stanum grupavoy baneri hamar
+	font-size: 40px;		 
+	border-bottom: 5px dashed red;
+} 
+
+@mixin fontz($f, $c) {  // @include   parametner enq talis ev grum nuyn dev 
+	font-size: $f;
+	color: $c;
+}
+
+.block {
+	width: 300px / 960px * 100%; //cssov stanum enq patrasti ir-% arjeq@
+	background-color: #666;
+	padding: 30px;
+	font-size: $fz;
+	line-height: 100px;
+	>p {  //senc grelov asume vor konkret henc es p ina veraberum ev verj
+		color: red;
+	}
+	.block__text {
+		font-size: $fz;
+			span {
+				color: $color-h1;
+			}
+	}
+	&.block--big{  //mek tegi mej vor erku classa linum grum enq ayspes
+		font-size: $fz;  
+	}
+}
+.link {
+	@include fontz('60px', green);
+	color: $color-2;
+	text-decoration: underline;
+	font-size: $fz;
+	.block &{  //sa asum e vor blocki meji henc ays link@ to poxvi
+		font-size: $fz;
+	}
+
+	&:hover{
+		color: $color-2;
+	}
+	@extend .tplborder;
+}
+.link-2{
+	@include fontz('40px', green);
+	@extend .tplborder; 	//grelov @extend ...   partadir ayspes kanchelov
+	border-bottom: 5px dashed #000; 
+}
